@@ -1,0 +1,198 @@
+<view class="container">
+<!--
+  <view wx:if="{{current == 'home'}}">
+    首页
+  </view>
+  <view wx:if="{{current == 'message'}}">
+    消息界面
+  </view>
+  <view wx:if="{{current == 'me'}}">
+    我的订单
+  </view>
+-->
+
+<!--首页-->
+<view class="content" wx:if="{{current == 'home'}}">
+  <!--分类导航-->
+  <view class="tabs">
+    <wux-tabs controlled scroll current="{{ currentTabKey }}" bind:change="onTabChange" theme="dark">
+      <wux-tab key="mobile" title="手机"></wux-tab>
+      <wux-tab key="book" title="图书"></wux-tab>
+      <wux-tab key="pad" title="平板电脑"></wux-tab>
+      <wux-tab key="laptop" title="笔记本电脑"></wux-tab>
+      <wux-tab key="electric" title="家电"></wux-tab>
+      <wux-tab key="ticket" title="票务卡券"></wux-tab>
+      <wux-tab key="cloth" title="衣物配饰"></wux-tab>
+      <wux-tab key="others" title="其他"></wux-tab>
+    </wux-tabs>
+  </view>
+
+  <scroll-view scroll-y="true" bindscrolltolower="onTouchedBottom" style='height:{{screenHeight}}px;'>
+    <!--手机分类-->
+    <block wx:if="{{currentTabKey == 'mobile'}}">
+      <!--手机分类按钮组-->
+      <view class='button-view-par'>
+        <view class='button-view'>
+          <block wx:for="{{mobileCate}}" wx:key="">
+            <button wx:if="{{index<4}}" data-id="{{item.id}}" data-fromtab="mobile" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+          </block>
+        </view>
+        <view class='button-view'>
+          <block wx:for="{{mobileCate}}" wx:key="">
+            <button wx:if="{{index>3 && index<8}}" data-id="{{item.id}}" data-fromtab="mobile" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+          </block>
+        </view>
+        <view class='button-view'>
+          <block wx:for="{{mobileCate}}" wx:key="">
+            <button wx:if="{{index>7}}" data-id="{{item.id}}" class="btn" data-fromtab="mobile" bindtap="reflashWaterFall">{{item.name}}</button>
+          </block>
+        </view>
+      </view>
+    </block>
+
+    <!--图书分类-->
+    <block wx:if="{{currentTabKey == 'book'}}">
+      <!--图书分类按钮组-->
+      <view class='button-view-par'>
+        <view class='button-view'>
+          <block wx:for="{{bookCate}}" wx:key="">
+            <button data-id="{{item.id}}" data-fromtab="book" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+          </block>
+        </view>
+      </view>
+    </block>
+
+    <!--平板电脑分类-->
+    <block wx:if="{{currentTabKey == 'pad'}}">
+      <!--平板电脑分类按钮组-->
+      <view class='button-view-par'>
+        <view class='button-view'>
+          <block wx:for="{{padCate}}" wx:key="">
+            <button wx:if="{{index<4}}" data-id="{{item.id}}" data-fromtab="pad" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+          </block>
+        </view>
+        <view class='button-view'>
+          <block wx:for="{{padCate}}" wx:key="">
+            <button wx:if="{{index>3}}" data-id="{{item.id}}" data-fromtab="pad" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+          </block>
+        </view>
+      </view>
+    </block>
+
+    <!--笔记本分类-->
+    <block wx:if="{{currentTabKey == 'laptop'}}">
+      <!--笔记本分类按钮组-->
+      <view class='button-view-par'>
+        <view class='button-view'>
+          <block wx:for="{{laptopCate}}" wx:key="">
+            <button wx:if="{{index<4}}" data-id="{{item.id}}" data-fromtab="laptop" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+          </block>
+        </view>
+        <view class='button-view'>
+          <block wx:for="{{laptopCate}}" wx:key="">
+            <button wx:if="{{index>3 && index<8}}" data-id="{{item.id}}" data-fromtab="laptop" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+          </block>
+        </view>
+        <view class='button-view'>
+          <block wx:for="{{laptopCate}}" wx:key="">
+            <button wx:if="{{index>7 && index<12}}" data-id="{{item.id}}" class="btn" data-fromtab="laptop" bindtap="reflashWaterFall">{{item.name}}</button>
+          </block>
+        </view>
+        <view class='button-view'>
+          <block wx:for="{{laptopCate}}" wx:key="">
+            <button wx:if="{{index>11}}" data-id="{{item.id}}" class="btn" data-fromtab="laptop" bindtap="reflashWaterFall">{{item.name}}</button>
+          </block>
+        </view>
+      </view>
+    </block>
+
+    <!--票务卡券分类-->
+    <block wx:if="{{currentTabKey == 'ticket'}}">
+      <!--票务卡券分类按钮组-->
+      <view class='button-view-par'>
+        <view class='button-view'>
+          <block wx:for="{{ticketCate}}" wx:key="">
+            <button wx:if="{{index<4}}" data-id="{{item.id}}" data-fromtab="ticket" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+          </block>
+        </view>
+        <view class='button-view'>
+          <block wx:for="{{ticketCate}}" wx:key="">
+            <button wx:if="{{index>3}}" data-id="{{item.id}}" data-fromtab="ticket" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+          </block>
+        </view>
+      </view>
+    </block>
+
+    <!--衣物首饰分类-->
+    <block wx:if="{{currentTabKey == 'cloth'}}">
+      <!--衣物首饰分类按钮组-->
+      <view class='button-view-par'>
+        <view class='button-view'>
+          <block wx:for="{{clothCate}}" wx:key="">
+            <button wx:if="{{index<4}}" data-id="{{item.id}}" data-fromtab="cloth" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+          </block>
+        </view>
+        <view class='button-view'>
+          <block wx:for="{{clothCate}}" wx:key="">
+            <button wx:if="{{index>3}}" data-id="{{item.id}}" data-fromtab="cloth" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+          </block>
+        </view>
+      </view>
+    </block>
+
+    <!--瀑布流block-->
+    <block>
+      <!--瀑布流左-->
+      <view class="left">
+        <block wx:for="{{note}}" wx:key="">
+          <product-item info-list="{{item}}" wx:if="{{index%2==0}}">
+          </product-item>
+        </block>
+      </view>
+      <!--瀑布流右-->
+      <view class="right">
+        <block wx:for="{{note}}" wx:key="">
+          <product-item info-list="{{item}}" wx:if="{{index%2==1}}">
+          </product-item>
+        </block>
+      </view>
+      <view class='bot' wx:if="{{isBottom == 1}}">~ 已经到底了 ~</view>
+    </block>
+  </scroll-view>
+</view>
+
+<!--消息-->
+<view wx:if="{{current == 'message'}}">
+  消息界面
+</view>
+
+<!--我的订单-->
+<view wx:if="{{current == 'me'}}">
+  我的订单
+</view>
+
+<view class='navbar'>
+  <!--底部导航栏-->
+  <wux-tabbar defaultCurrent="home" position="bottom" bind:change="onChange" controlled="true" current="{{current}}">
+    <wux-tabbar-item key="home" title="首页">
+        <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-on" />
+        <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-off" />
+    </wux-tabbar-item>
+    <wux-tabbar-item key="publish" title="发布二手">
+        <wux-icon wux-class="icon" type="ios-add-circle" size="22" slot="icon-on" />
+        <wux-icon wux-class="icon" type="ios-add-circle" size="22" slot="icon-off" />
+    </wux-tabbar-item>
+    <wux-tabbar-item key="message" title="消息">
+        <wux-icon wux-class="icon" type="ios-chatboxes" size="22" slot="icon-on" />
+        <wux-icon wux-class="icon" type="ios-chatboxes" size="22" slot="icon-off" />
+    </wux-tabbar-item>
+    <wux-tabbar-item key="me" title="我的">
+        <wux-icon wux-class="icon" type="ios-person" size="22" slot="icon-on" />
+        <wux-icon wux-class="icon" type="ios-person" size="22" slot="icon-off" />
+    </wux-tabbar-item>
+  </wux-tabbar>
+</view>
+
+
+
+</view>

@@ -1,0 +1,20 @@
+/* pages/fucktencent/sbtencent.wxss */
+.button-view {
+  padding: 24rpx 30rpx;
+}
+.main-view {
+  background-color: #ffe3af;
+  height: 100%;
+  position: absolute;
+}
+
+.des {
+  margin-top: 50%;
+  margin-bottom: 30rpx;
+  font-size: 38rpx;
+}
+
+.des-text {
+  width: 60%;
+  margin:0 auto;
+}

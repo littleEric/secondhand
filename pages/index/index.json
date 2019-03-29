@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "wux-icon": "../../dist/icon/index",
+    "wux-tabbar": "../../dist/tabbar/index",
+    "wux-tabbar-item": "../../dist/tabbar-item/index",
+    "product-item": "/component/product-home-item/index",
+    "wux-tabs": "../../dist/tabs/index",
+    "wux-tab": "../../dist/tab/index",
+    "wux-grids": "../../dist/grids/index",
+    "wux-grid": "../../dist/grid/index"
+  }
+}

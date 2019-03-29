@@ -1,0 +1,12 @@
+/* pages/loading/loading.wxss */
+.main-view {
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.spin-view {
+  padding: 20rpx;
+}

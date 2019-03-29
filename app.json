@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/loading/loading",
+    "pages/fucktencent/sbtencent",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/publish/publish",
+    "pages/me/me"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "财大二手交易平台",
+    "navigationBarTextStyle": "black"
+  }
+}

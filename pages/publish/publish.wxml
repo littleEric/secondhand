@@ -1,0 +1,61 @@
+<wux-toast id="wux-toast" />
+<view>
+  <wux-notice-bar loop speed="100" content="为保障互联网上网服务经营活动健康发展，促进社会主义精神文明建设，本站禁止发布任何违反《互联网上网服务营业场所管理条例》内容。" />
+  <view class="upload-bar">
+    <wux-upload listType="picture-card" max="8" count="4" defaultFileType="image" url="{{ uploadUrl }}" formData="{{ formData }}" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:preview="onPreview" bind:remove="onRemove">
+    <view class="icon-view">
+      <view>
+        <wux-icon type="ios-camera"/>
+      </view>
+      <text class="text-add">添加图片</text>
+    </view>
+    </wux-upload>
+  </view>
+  <view class="cut-line"></view>
+  <view>
+    <wux-cell-group>
+      <wux-cell>
+        <wux-textarea placeholder="{{titleTextHolder}}" maxlength="30" autoHeight="true" hasCount="true" bind:blur	="onTitleBlur" disabled="{{textAreaDisable}}"/>
+      </wux-cell>
+      <wux-cell>
+        <wux-textarea placeholder="{{detailTextHolder}}" maxlength="128" rows="6" hasCount="true" bind:blur	="onDetailBlur" disabled="{{textAreaDisable}}"/>
+      </wux-cell>
+    </wux-cell-group>
+  </view>
+
+  <!--位置-->
+  <view class="location-parent">
+    <view class="location-icon">
+      <wux-icon type="ios-pin" size="30" color="#afafaf"/>
+    </view>
+    <view class="location-radio-group">
+      <radio-group bindchange="onRadioChange">
+        <label wx:for="{{productLocation}}" wx:key="" class="location-radio-label">
+          <radio value="{{item.id}}" checked="{{item.checked}}"/>
+          {{item.location}}
+        </label>
+      </radio-group>
+    </view>
+  </view>
+  <view class="cut-line"></view>
+  <!--选择分类，级联-->  
+  <view class="choose-cate">
+    <wux-cascader visible="{{ visible }}" default-value="{{ value }}" title="所在地区" options="{{ options }}" bind:close="onJlClose" bind:change="onJlChange" />
+      <wux-cell-group>
+        <wux-cell title="选择分类" extra="{{ jlTitle }}" bind:click="onJlOpen"></wux-cell>
+      </wux-cell-group>
+  </view>
+  <view>
+    <wux-cell-group>
+      <wux-cell hover-class="none">
+        <wux-input label="价格" type="number" placeholder="1024" custom-style="padding-left: 50%;" bind:blur="onPriceInputBlur">
+          <view slot="footer" style="margin-left: 5px">￥</view>
+        </wux-input>
+      </wux-cell>
+    </wux-cell-group>
+  </view>
+
+  <view class="submit_btn">
+    <wux-button block type="assertive" custom-style="padding:0;margin:0;" bind:click="onSubmitClick">发布商品</wux-button>
+  </view>
+</view>

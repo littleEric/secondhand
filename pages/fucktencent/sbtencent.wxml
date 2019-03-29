@@ -1,0 +1,15 @@
+<!--pages/fucktencent/sbtencent.wxml-->
+<wux-toast id="wux-toast" />
+<view class='main-view'>
+  <view class='des'>
+    <view class='des-text'>
+      <text class='text'>小程序需要获取用户头像和昵称才能完成后续操作，请点击下方蓝色按钮授权</text>
+    </view>
+  </view>
+  <view class='button-view'>
+    <wux-button block type="positive" openType="getUserInfo" bind:getuserinfo="getUser">
+      <wux-icon type="ios-outlet" size="20" />点击授权用户头像和昵称
+    </wux-button>
+  </view>
+
+</view>

@@ -1,0 +1,6 @@
+<!--pages/loading/loading.wxml-->
+<view class='main-view'>
+  <view class='spin-view'>
+    <wux-spin wux-class="spin" size="large" />
+  </view>
+</view>
