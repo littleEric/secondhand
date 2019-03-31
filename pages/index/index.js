@@ -94,15 +94,27 @@ Page({
   },
 
   onTabChange(e) {
+    var that = this
     //点击同一个tab不刷新数据
-    if(e.detail.key != this.data.currentTabKey){
-      console.log('onTabChange', e.detail.key)
+    const {key} = e.detail
+    const {currentTabKey} = this.data
+    if(key != currentTabKey){
+      console.log('onTabChange', key)
+      //更新当前分类标签
       this.setData({
-        currentTabKey: e.detail.key,
+        currentTabKey: key,
       })
       //更新currentBtn为all
       this.setData({
         currentBtn: "all"
+      })
+      //更新currentPage为1
+      this.setData({
+        currentPage: 1
+      })
+      //更新note
+      this.getRes(key,1,"all").then((res)=>{
+        that.firstTimeReflash(res)
       })
     }
   },
@@ -134,8 +146,11 @@ Page({
   onTouchedBottom: function(e){
     //逻辑：根据当前page值向服务器请求数据，每页10条，若返回数据小于10条，则设置标志位isBottom为1,前段显示已经到底了
     var that = this;
+    // console.log("onTouchedBottom::outside");
     if(this.data.isBottom == 0){
+      // console.log("onTouchedBottom::inside");
       const { currentTabKey, currentPage, currentBtn } = that.data;
+      // console.log(currentPage)
       that.getRes(currentTabKey, currentPage + 1, currentBtn).then((res) => { 
         that.setData({
           currentPage: currentPage+1
@@ -146,26 +161,53 @@ Page({
           })
           // console.log("that.data.currentPage:::->>>",that.data.currentPage)
           var dataList = that.data.note.concat(res)
-          that.setData({
-            note:dataList
-          })
+          return dataList;
         }
+       }).then((res)=>{
+        //  console.log("onTouchedBottom::then::then----->>", res)
+         that.setData({
+           note: res
+         })
        })
     }
-    this.setData({
-      isBottom:1
-    })
   },
   //点击分类按钮刷新瀑布流
   reflashWaterFall:function(event){
+    var that = this
+    //设置currentPage为1
+    that.setData({
+      currentPage: 1
+    })
     //获取点击来源,fromtab:分类按钮id，id：品牌按钮id
     const { fromtab,id } = event.currentTarget.dataset;
-    if(!(this.data.currentBtn === fromtab)){
+    const { currentBtn } = this.data
+    if(!(currentBtn === id)){
       //更新currentBtn
       this.setData({
         currentBtn : id
       })
+      console.log("reflashWaterFall:::before")
+      this.getRes(fromtab,1,id).then((res)=>{
+        that.firstTimeReflash(res);
+      })
     }
+  },
+  //首次刷新
+  firstTimeReflash:function(res){
+    console.log("firstTimeReflash::res::length--->>",res.length)
+    if (res.length < 10) {    //少于10条数据，设置触底标志为1
+      this.setData({
+        isBottom: 1
+      })
+    }else{                    //否则设置触底标志为0
+      this.setData({
+        isBottom: 0
+      })
+    }
+    console.log("firstTimeReflash::data::isBottom--->>>",this.data.isBottom)
+    this.setData({        //更新数据
+      note: res
+    })
   },
   //向服务器请求数据,返回数据结构如data.note
   getRes:function(currentTabKey,currentPage,currentBtn){
