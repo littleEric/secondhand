@@ -5,6 +5,7 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    // wx.setStorageSync('token', 'd27846d56770428cb542d66f9d6c57a0')
     
   },
   globalData: {
@@ -12,7 +13,7 @@ App({
     fileUploadUrl: "http://192.168.2.171:8080/publish/uploadpic",     //上传路径
     submitFormUrl: "http://192.168.2.171:8080/publish/add",     //商品发布url
     loginUrl: "http://192.168.2.171:8080/wxlogin",          //登录获取_3rd_session
-    productItemRedirectUrl: "/pages/logs/logs",    //点击首页商品跳转页面
+    productItemRedirectUrl: "/pages/productInfo/productInfo",    //点击首页商品跳转页面
     imgUrlPrefix:"http://192.168.2.171:7888/",//图片资源url前缀
     reflushWaterFall:"http://192.168.2.171:8080/index/productlist"//刷新瀑布流url
   },

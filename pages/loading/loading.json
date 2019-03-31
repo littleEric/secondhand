@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "加载中...",
   "usingComponents": {
     "wux-spin": "../../dist/spin/index"
   }

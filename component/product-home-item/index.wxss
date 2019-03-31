@@ -8,8 +8,8 @@
   width: 100%;
 }
 .item-ava{
-  width: 40rpx;
-  height: 40rpx;
+  width: 60rpx;
+  height: 60rpx;
   border-radius: 20rpx;
 }
 

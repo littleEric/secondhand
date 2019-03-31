@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "发布二手",
   "usingComponents": {
     "wux-notice-bar": "../../dist/notice-bar/index",
     "wux-icon": "../../dist/icon/index",
