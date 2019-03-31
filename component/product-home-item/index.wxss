@@ -5,6 +5,7 @@
   margin: 1%; 
   margin-bottom: 20rpx;
   display: inline-block;
+  width: 100%;
 }
 .item-ava{
   width: 40rpx;
@@ -18,7 +19,7 @@
   border-radius: 12rpx;
 }
 .item-title{
-  font-size: 24rpx;
+  font-size: 27rpx;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -73,7 +74,7 @@
 .left,.right{
   display: inline-block;
   vertical-align: top;
-  width: 49%;
+  width: 50%;
 }
 .right{
   float: right;

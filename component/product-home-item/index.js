@@ -12,7 +12,9 @@ Component({
     // avatarUrl:String,
     // name:String,
     // location:Number     //0:广州校区   1:佛山校区
-    infoList: Object
+    infoList: Object,       //json
+    redirectUrl:String,     //重定向路径
+    imgUrlPrefix:String,    //图片路径前缀
   },
 
   /**

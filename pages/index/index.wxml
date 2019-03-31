@@ -34,17 +34,17 @@
       <view class='button-view-par'>
         <view class='button-view'>
           <block wx:for="{{mobileCate}}" wx:key="">
-            <button wx:if="{{index<4}}" data-id="{{item.id}}" data-fromtab="mobile" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+            <button wx:if="{{index<4}}" type="{{(item.id == currentBtn)?'warn':'default'}}" data-id="{{item.id}}" data-fromtab="mobile" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
           </block>
         </view>
         <view class='button-view'>
           <block wx:for="{{mobileCate}}" wx:key="">
-            <button wx:if="{{index>3 && index<8}}" data-id="{{item.id}}" data-fromtab="mobile" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+            <button wx:if="{{index>3 && index<8}}" type="{{(item.id == currentBtn)?'warn':'default'}}" data-id="{{item.id}}" data-fromtab="mobile" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
           </block>
         </view>
         <view class='button-view'>
           <block wx:for="{{mobileCate}}" wx:key="">
-            <button wx:if="{{index>7}}" data-id="{{item.id}}" class="btn" data-fromtab="mobile" bindtap="reflashWaterFall">{{item.name}}</button>
+            <button wx:if="{{index>7}}" type="{{(item.id == currentBtn)?'warn':'default'}}" data-id="{{item.id}}" class="btn" data-fromtab="mobile" bindtap="reflashWaterFall">{{item.name}}</button>
           </block>
         </view>
       </view>
@@ -56,7 +56,7 @@
       <view class='button-view-par'>
         <view class='button-view'>
           <block wx:for="{{bookCate}}" wx:key="">
-            <button data-id="{{item.id}}" data-fromtab="book" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+            <button data-id="{{item.id}}" type="{{(item.id == currentBtn)?'warn':'default'}}" data-fromtab="book" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
           </block>
         </view>
       </view>
@@ -68,12 +68,12 @@
       <view class='button-view-par'>
         <view class='button-view'>
           <block wx:for="{{padCate}}" wx:key="">
-            <button wx:if="{{index<4}}" data-id="{{item.id}}" data-fromtab="pad" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+            <button wx:if="{{index<4}}" type="{{(item.id == currentBtn)?'warn':'default'}}" data-id="{{item.id}}" data-fromtab="pad" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
           </block>
         </view>
         <view class='button-view'>
           <block wx:for="{{padCate}}" wx:key="">
-            <button wx:if="{{index>3}}" data-id="{{item.id}}" data-fromtab="pad" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+            <button wx:if="{{index>3}}" type="{{(item.id == currentBtn)?'warn':'default'}}" data-id="{{item.id}}" data-fromtab="pad" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
           </block>
         </view>
       </view>
@@ -85,22 +85,22 @@
       <view class='button-view-par'>
         <view class='button-view'>
           <block wx:for="{{laptopCate}}" wx:key="">
-            <button wx:if="{{index<4}}" data-id="{{item.id}}" data-fromtab="laptop" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+            <button wx:if="{{index<4}}" type="{{(item.id == currentBtn)?'warn':'default'}}" data-id="{{item.id}}" data-fromtab="laptop" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
           </block>
         </view>
         <view class='button-view'>
           <block wx:for="{{laptopCate}}" wx:key="">
-            <button wx:if="{{index>3 && index<8}}" data-id="{{item.id}}" data-fromtab="laptop" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+            <button wx:if="{{index>3 && index<8}}" type="{{(item.id == currentBtn)?'warn':'default'}}" data-id="{{item.id}}" data-fromtab="laptop" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
           </block>
         </view>
         <view class='button-view'>
           <block wx:for="{{laptopCate}}" wx:key="">
-            <button wx:if="{{index>7 && index<12}}" data-id="{{item.id}}" class="btn" data-fromtab="laptop" bindtap="reflashWaterFall">{{item.name}}</button>
+            <button wx:if="{{index>7 && index<12}}" type="{{(item.id == currentBtn)?'warn':'default'}}" data-id="{{item.id}}" class="btn" data-fromtab="laptop" bindtap="reflashWaterFall">{{item.name}}</button>
           </block>
         </view>
         <view class='button-view'>
           <block wx:for="{{laptopCate}}" wx:key="">
-            <button wx:if="{{index>11}}" data-id="{{item.id}}" class="btn" data-fromtab="laptop" bindtap="reflashWaterFall">{{item.name}}</button>
+            <button wx:if="{{index>11}}" type="{{(item.id == currentBtn)?'warn':'default'}}" data-id="{{item.id}}" class="btn" data-fromtab="laptop" bindtap="reflashWaterFall">{{item.name}}</button>
           </block>
         </view>
       </view>
@@ -112,12 +112,12 @@
       <view class='button-view-par'>
         <view class='button-view'>
           <block wx:for="{{ticketCate}}" wx:key="">
-            <button wx:if="{{index<4}}" data-id="{{item.id}}" data-fromtab="ticket" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+            <button wx:if="{{index<4}}" type="{{(item.id == currentBtn)?'warn':'default'}}" data-id="{{item.id}}" data-fromtab="ticket" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
           </block>
         </view>
         <view class='button-view'>
           <block wx:for="{{ticketCate}}" wx:key="">
-            <button wx:if="{{index>3}}" data-id="{{item.id}}" data-fromtab="ticket" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+            <button wx:if="{{index>3}}" type="{{(item.id == currentBtn)?'warn':'default'}}" data-id="{{item.id}}" data-fromtab="ticket" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
           </block>
         </view>
       </view>
@@ -129,12 +129,12 @@
       <view class='button-view-par'>
         <view class='button-view'>
           <block wx:for="{{clothCate}}" wx:key="">
-            <button wx:if="{{index<4}}" data-id="{{item.id}}" data-fromtab="cloth" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+            <button wx:if="{{index<4}}" type="{{(item.id == currentBtn)?'warn':'default'}}" data-id="{{item.id}}" data-fromtab="cloth" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
           </block>
         </view>
         <view class='button-view'>
           <block wx:for="{{clothCate}}" wx:key="">
-            <button wx:if="{{index>3}}" data-id="{{item.id}}" data-fromtab="cloth" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
+            <button wx:if="{{index>3}}" type="{{(item.id == currentBtn)?'warn':'default'}}" data-id="{{item.id}}" data-fromtab="cloth" class="btn" bindtap="reflashWaterFall">{{item.name}}</button>
           </block>
         </view>
       </view>
@@ -145,14 +145,14 @@
       <!--瀑布流左-->
       <view class="left">
         <block wx:for="{{note}}" wx:key="">
-          <product-item info-list="{{item}}" wx:if="{{index%2==0}}">
+          <product-item info-list="{{item}}" redirect-url="{{redirectUrl}}" img-url-prefix="{{imgUrlPrefix}}" wx:if="{{index%2==0}}">
           </product-item>
         </block>
       </view>
       <!--瀑布流右-->
       <view class="right">
         <block wx:for="{{note}}" wx:key="">
-          <product-item info-list="{{item}}" wx:if="{{index%2==1}}">
+          <product-item info-list="{{item}}"redirect-url="{{redirectUrl}}" img-url-prefix="{{imgUrlPrefix}}" wx:if="{{index%2==1}}">
           </product-item>
         </block>
       </view>

@@ -1,8 +1,8 @@
 <!--component/product_home_item/product_home_item.wxml-->
 <view class="item">
-<navigator url="{{infoList.redirect_url}}?id={{infoList.id}}">
+<navigator url="{{redirectUrl}}?id={{infoList.id}}">
   <!--商品图片-->
-  <image class="item-img" src="{{infoList.img_url}}" mode="widthFix"></image>
+  <image class="item-img" src="{{imgUrlPrefix}}{{infoList.coverFileName}}" mode="widthFix"></image>
   <view>
     <!--商品简介-->
     <text class="item-title">{{infoList.title}}</text> 
@@ -14,12 +14,12 @@
   <view class="name">
     <view class="view-ava">
       <!--头像-->
-      <image class="item-ava" src="{{infoList.avatar_url}}"></image>
+      <image class="item-ava" src="{{infoList.userEntity.avatarUrl}}"></image>
     </view>
     <view class="txt">
       <!--用户昵称-->  
-      <text class="name-title">{{infoList.name}}</text>
-      <text class="location">{{infoList.location==0 ? "三水校区" : "广州校区"}}</text>
+      <text class="name-title">{{infoList.userEntity.name}}</text>
+      <text class="location">{{infoList.location == "0" ? "三水校区" : "广州校区"}}</text>
     </view>
   </view>
 </view>

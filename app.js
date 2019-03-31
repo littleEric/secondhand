@@ -12,6 +12,9 @@ App({
     fileUploadUrl: "http://192.168.2.171:8080/publish/uploadpic",     //上传路径
     submitFormUrl: "http://192.168.2.171:8080/publish/add",     //商品发布url
     loginUrl: "http://192.168.2.171:8080/wxlogin",          //登录获取_3rd_session
+    productItemRedirectUrl: "/pages/logs/logs",    //点击首页商品跳转页面
+    imgUrlPrefix:"http://192.168.2.171:7888/",//图片资源url前缀
+    reflushWaterFall:"http://192.168.2.171:8080/index/productlist"//刷新瀑布流url
   },
   //登录授权
   wxLogin: function () {
@@ -25,7 +28,7 @@ App({
             wx.getUserInfo({
               success: function (res) {
                 const { userInfo } = res;
-                console.log("app.js/getUserInfo:",res);
+                console.log("app.js::getUserInfo->",res);
                 //设置全局userInfo
                 that.globalData.userInfo = userInfo;
                 reslove(userInfo);
@@ -44,14 +47,18 @@ App({
                 console.log("wx.request.success", resp)
                 const{statusCode} = resp
                 const{_3rd_session} = resp.data
-                
+                const _3rd_session_exist = wx.getStorageSync("_3rd_session");
+                // console.log("_3rd_session_exist->", _3rd_session_exist)
                 if (_3rd_session) {
                   //缓存_3rd_session
                   wx.setStorageSync("_3rd_session", _3rd_session)
                 }
-                wx.redirectTo({             //登录成功，跳转到主页
-                  url: '/pages/index/index',
-                })
+                if(("" == _3rd_session_exist)){                //如果是首次登录则跳转
+                    wx.redirectTo({             //登录成功，跳转到主页
+                    url: '/pages/index/index',
+                  })
+                }
+
               }
             })
           }).catch(function (reason) {

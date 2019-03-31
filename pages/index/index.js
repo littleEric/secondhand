@@ -1,14 +1,17 @@
 // pages/abc.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    redirectUrl: app.globalData.productItemRedirectUrl, //组件跳转Url
+    imgUrlPrefix:app.globalData.imgUrlPrefix,//图片url前缀
     current: 'home',    //tabBar当前key
     currentTabKey:'mobile',//tab当前key
     currentPage:1,    //分页查询
-    currentBtn:"",    //保存当前按钮id
+    currentBtn:"all",    //保存当前按钮id
     isBottom:0,       //标志位，是否到达底部
     screenHeight:0,   //屏幕高度，设置scroll-view高度,onLoad中初始化
     mobileCate: [     //手机品牌
@@ -71,86 +74,7 @@ Page({
       { id: "other", name: "其他" },
       { id: "all", name: "全部" }
     ],      
-    note: [
-      {
-        id: 1,
-        name: '大脸猫爱吃鱼大脸猫爱吃鱼大脸猫爱吃鱼大脸猫爱吃鱼大脸猫爱吃鱼',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        price: 100,
-        location: 1,
-        redirect_url:"/pages/logs/logs",
-        img_url: 'http://f10.baidu.com/it/u=121654667,1482133440&fm=72',
-        avatar_url: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      },
-      {
-        id: 2,
-        name: '大脸猫爱吃鱼',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        price: 100,
-        location: 0, 
-        redirect_url: "/pages/logs/logs",
-        img_url: 'http://img3.imgtn.bdimg.com/it/u=1417732605,3777474040&fm=26&gp=0.jpg',
-        avatar_url: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      },
-      {
-        id: 2,
-        name: '大脸猫爱吃鱼',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        price:100,
-        location:0,
-        redirect_url: "/pages/logs/logs",
-        img_url: 'http://img3.imgtn.bdimg.com/it/u=1417732605,3777474040&fm=26&gp=0.jpg',
-        avatar_url: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      }, {
-        id: 2,
-        name: '大脸猫爱吃鱼',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        price: 100,
-        location: 0,
-        redirect_url: "/pages/logs/logs",
-        img_url: 'http://f10.baidu.com/it/u=121654667,1482133440&fm=72',
-        avatar_url: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      },
-      {
-        id: 2,
-        name: '大脸猫爱吃鱼',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        price: 100,
-        location: 1,
-        redirect_url: "/pages/logs/logs",
-        img_url: 'http://f10.baidu.com/it/u=121654667,1482133440&fm=72',
-        avatar_url: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      },
-      {
-        id: 2,
-        name: '大脸猫爱吃鱼',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        price: 100,
-        location: 1,
-        redirect_url: "/pages/logs/logs",
-        img_url: 'http://img3.imgtn.bdimg.com/it/u=1417732605,3777474040&fm=26&gp=0.jpg',
-        avatar_url: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      },
-      {
-        id: 2,
-        name: '大脸猫爱吃鱼',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        price: 100,
-        location: 0,
-        redirect_url: "/pages/logs/logs",
-        img_url: 'http://img4.imgtn.bdimg.com/it/u=2748975304,2710656664&fm=26&gp=0.jpg',
-        avatar_url: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      }, {
-        id: 2,
-        name: '大脸猫爱吃鱼',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        price: 100,
-        location: 0,
-        redirect_url: "/pages/logs/logs",
-        img_url: 'http://img2.imgtn.bdimg.com/it/u=1561660534,130168102&fm=26&gp=0.jpg',
-        avatar_url: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      }
-    ]
+    note: [],
   },
 
   //底部navbar点击时触发
@@ -176,6 +100,10 @@ Page({
       this.setData({
         currentTabKey: e.detail.key,
       })
+      //更新currentBtn为all
+      this.setData({
+        currentBtn: "all"
+      })
     }
   },
 
@@ -191,58 +119,13 @@ Page({
         })
       }
     })
-
+    console.log(that.data);
+    const { currentTabKey, currentPage, currentBtn } = that.data;
+    that.getRes(currentTabKey, currentPage, currentBtn).then((res) => { that.setData({
+      note: res
+    }) })
     //打印_3rd_session
     console.log("3rd_session",wx.getStorageSync("_3rd_session"))
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   },
 
   /**
@@ -250,21 +133,24 @@ Page({
    */
   onTouchedBottom: function(e){
     //逻辑：根据当前page值向服务器请求数据，每页10条，若返回数据小于10条，则设置标志位isBottom为1,前段显示已经到底了
+    var that = this;
     if(this.data.isBottom == 0){
-      var abc = {
-        name: '大脸猫爱吃鱼',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        price: 100,
-        location: 0,
-        redirect_url: "/pages/logs/logs",
-        img_url: 'http://img2.imgtn.bdimg.com/it/u=1561660534,130168102&fm=26&gp=0.jpg',
-        avatar_url: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      }
-      var dataList = this.data.note;
-      dataList.push(abc);
-      this.setData({
-        note: dataList
-      })
+      const { currentTabKey, currentPage, currentBtn } = that.data;
+      that.getRes(currentTabKey, currentPage + 1, currentBtn).then((res) => { 
+        that.setData({
+          currentPage: currentPage+1
+        })//currentPage+1
+        if(res.length<10){      //返回数据条数<10
+          that.setData({
+            isBottom:1          //设置触底标记
+          })
+          // console.log("that.data.currentPage:::->>>",that.data.currentPage)
+          var dataList = that.data.note.concat(res)
+          that.setData({
+            note:dataList
+          })
+        }
+       })
     }
     this.setData({
       isBottom:1
@@ -272,21 +158,41 @@ Page({
   },
   //点击分类按钮刷新瀑布流
   reflashWaterFall:function(event){
-    //console.log(event)
-    //获取当前按钮id
-    var id = event.currentTarget.dataset.id;
-    //更新currentBtn
-    this.setData({
-      currentBtn : id
-    })
-    //获取点击来源
-    var fromtab = event.currentTarget.dataset.fromtab;
-    console.log("reflashWaterFall",fromtab,id)
-    //向服务器请求数据，更新note字段
-
+    //获取点击来源,fromtab:分类按钮id，id：品牌按钮id
+    const { fromtab,id } = event.currentTarget.dataset;
+    if(!(this.data.currentBtn === fromtab)){
+      //更新currentBtn
+      this.setData({
+        currentBtn : id
+      })
+    }
   },
   //向服务器请求数据,返回数据结构如data.note
   getRes:function(currentTabKey,currentPage,currentBtn){
-
+    var jsonData = {
+      'category':currentTabKey,
+      'brand':currentBtn,
+      'page':currentPage
+    }
+    var result;
+    // var that = this;
+    return new Promise((reslove,reject)=>{
+      wx.request({
+        url: app.globalData.reflushWaterFall,
+        data: jsonData,
+        header: {
+          'token': wx.getStorageSync("_3rd_session")
+        },
+        method: 'POST',
+        dataType: 'json',
+        success: function (res) {
+          reslove(res.data);
+        },
+        fail: function (res) {
+          reject(res);
+        },
+        complete: function (res) { },
+      })
+    })
   }
 })

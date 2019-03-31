@@ -2,7 +2,7 @@
 <view>
   <wux-notice-bar loop speed="100" content="为保障互联网上网服务经营活动健康发展，促进社会主义精神文明建设，本站禁止发布任何违反《互联网上网服务营业场所管理条例》内容。" />
   <view class="upload-bar">
-    <wux-upload listType="picture-card" max="8" count="4" defaultFileType="image" url="{{ uploadUrl }}" formData="{{ formData }}" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:preview="onPreview" bind:remove="onRemove">
+    <wux-upload listType="picture-card" max="8" count="4" defaultFileType="image" url="{{ uploadUrl }}" header="{{ header }}" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:preview="onPreview" bind:remove="onRemove">
     <view class="icon-view">
       <view>
         <wux-icon type="ios-camera"/>

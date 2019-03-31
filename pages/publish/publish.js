@@ -28,12 +28,16 @@ Page({
     textAreaDisable: false,
     jlTitle:"",
     uploadUrl:getApp().globalData.fileUploadUrl,
+    header: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      header: { 'token': wx.getStorageSync("_3rd_session")}
+    })
     console.log(data.dd)
   },
   
@@ -55,11 +59,11 @@ Page({
               }
             }
           }
-          return "fuck!"          //出错，用字符串代替
+          return "ffff"          //出错，用字符串代替
         })
         //更新filelist
         this.setData({
-          fileList: temp.filter((x) => { return x != "fuck!" })//过滤掉出错的文件名
+          fileList: temp.filter((x) => { return x != "ffff" })//过滤掉出错的文件名
         })
       }
     }
@@ -190,12 +194,12 @@ Page({
     var brand = this.data.brand;
     var price = this.data.price;
     //提示未上传图片
-    if(fileNameList.length == 0 ){
+    if(fileNameList.length < 3 ){
       $wuxToast().show({
         type: 'forbidden',
         duration: 1500,
         color: '#fff',
-        text: '未上传图片'
+        text: '最少上传3张图片'
       })
       return
     }
@@ -272,7 +276,16 @@ Page({
       },
       method: "POST",
       dataType: "json",
-      success(res){console.log(res)},
+      success(res){
+        if (res.data.msg = "ADD_PRODUCT_SUCCESS"){
+          wx.redirectTo({
+            url: '/pages/index/index',
+            success: function(res) {},
+            fail: function(res) {},
+            complete: function(res) {},
+          })
+        }
+        },
       fail(res){console.log(res)}
     })
   }
