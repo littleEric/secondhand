@@ -13,6 +13,9 @@
     <view class='priceview'>
       <text class='pricetext'>￥13500</text>
     </view>
+    <view class='title'>
+      <text>全新小米8</text>
+    </view>
     <view class='locationview'>
       <text>广州校区</text>
     </view>
@@ -25,6 +28,7 @@
     </view>
     <view class='detailview'>laksjdfkljalskjf;kjasdl;fk</view>
     <view class='imgmainview'>
+      <image src='http://192.168.2.171:7888/6c6e267ba9a947e89765e7a1f2a775bc.jpeg' mode='widthFix' style='width:100%'></image>
       <image src='http://192.168.2.171:7888/6c6e267ba9a947e89765e7a1f2a775bc.jpeg' mode='widthFix' style='width:100%'></image>
     </view>
   </view>

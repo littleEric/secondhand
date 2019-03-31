@@ -24,11 +24,11 @@
 
 .pricetext{
   color: red;
-  font-size: larger;
+  font-size: x-large;
 }
 
 .locationview{
-  font-size: large;
+  font-size: medium;
   background-color: #e9e9e9;
   border-radius: 30rpx;
   width: 30%;
@@ -43,6 +43,12 @@
 
 .panel2{
   margin: 10rpx 20rpx;
+}
+
+.title{
+  margin-bottom: 20rpx;
+  font-size: large;
+  padding-left: 40rpx;
 }
 
 .detailtitle{
