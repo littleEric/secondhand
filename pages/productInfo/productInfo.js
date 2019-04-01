@@ -79,5 +79,20 @@ Page({
   //立即购买按钮点击
   buynow:function(){
     //跳转到订单生成页
+
+  },
+
+  onPreview:function(e) {         //图片预览
+    console.log("onPreview:::e--->",e)
+    const { url } = e.currentTarget.dataset
+    const { productInfo, imgUrlPrefix } = this.data;
+    const urls = productInfo.imgUrlList.map((x)=>{
+      return imgUrlPrefix + x.imgUrl
+    })
+    // console.log(urls)
+    wx.previewImage({
+      urls: urls,
+      current: imgUrlPrefix+url
+    })
   }
 })

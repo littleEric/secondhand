@@ -29,7 +29,7 @@
     <view class='detailview'>{{productInfo.detail}}</view>
     <view class='imgmainview'>
       <block wx:for="{{productInfo.imgUrlList}}" wx:key=''>
-        <image src="{{imgUrlPrefix}}{{item.imgUrl}}" mode='widthFix' style='width:100%'></image>
+        <image src="{{imgUrlPrefix}}{{item.imgUrl}}" data-url="{{item.imgUrl}}" mode='widthFix' style='width:100%' bindtap='onPreview'></image>
       </block>
     </view>
   </view>
