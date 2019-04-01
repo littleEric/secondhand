@@ -1,13 +1,13 @@
 {
   "pages": [
-    
     "pages/loading/loading",
     "pages/fucktencent/sbtencent",
     "pages/index/index",
     "pages/logs/logs",
     "pages/publish/publish",
     "pages/me/me",
-    "pages/productInfo/productInfo"
+    "pages/productInfo/productInfo",
+    "pages/order/order"
   ],
   "window": {
     "backgroundTextStyle": "light",
