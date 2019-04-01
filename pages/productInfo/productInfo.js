@@ -5,14 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    ifstar:true,
+    productId:0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log("onLoad:::options.id--->",options.id);
   },
 
   /**
@@ -62,5 +63,24 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  star:function(){
+    const { ifstar } = this.data;
+    //访问后台，操作收藏夹
+    if(ifstar){
+      this.setData({
+        ifstar:false
+      })
+    }else{
+      this.setData({
+        ifstar:true
+      })
+    }
+  },
+
+  //立即购买按钮点击
+  buynow:function(){
+    //跳转到订单生成页
   }
 })

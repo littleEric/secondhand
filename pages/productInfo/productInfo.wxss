@@ -42,7 +42,7 @@
 }
 
 .panel2{
-  margin: 10rpx 20rpx;
+  margin: 10rpx 20rpx 80rpx 20rpx;
 }
 
 .title{
@@ -72,5 +72,52 @@
   width: 90%;
 }
 
+.panel3{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  background-color: #ffffff;
+}
+
+.starview{
+  display: flex;
+  float: left;
+  width: 30%;
+  height: 100%;
+  align-items: center;
+  margin-left: 60rpx;
+}
+
+.btn-view{
+  display: flex;
+  height: 100%;
+  width: 40%;
+  float: right;
+  align-items: center;
+}
+
+.btn{
+  height: 60rpx;
+  width: 100%;
+  margin-right: 60rpx;
+  text-align: center;
+  vertical-align:middle;
+  line-height: 60rpx;
+}
+
+.starview>button{
+  border: 0;
+  background: transparent;
+  margin: 0 0;
+}
+
+.starview>text{
+  font-size: 30rpx;
+  color: #cecece;
+}
 
 
+.starview>button::after{
+  border: 0;
+}

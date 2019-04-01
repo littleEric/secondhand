@@ -32,4 +32,24 @@
       <image src='http://192.168.2.171:7888/6c6e267ba9a947e89765e7a1f2a775bc.jpeg' mode='widthFix' style='width:100%'></image>
     </view>
   </view>
+  <view class='panel3'>
+    <view class='starview'>
+      <block wx:if="{{!ifstar}}">
+        <button bindtap="star">
+          <wux-icon type="ios-star-outline" />
+        </button>
+        <text>点击收藏</text>
+      </block>
+      <block wx:if="{{ifstar}}">
+        <button bindtap="star">
+          <wux-icon type="ios-star" />
+        </button>
+        <text>取消收藏</text>
+      </block>
+        
+    </view>
+    <view class='btn-view'>
+      <button size='default' type='warn' class='btn' bindtap='buynow'>立即购买</button>
+    </view>
+  </view>
 </view>

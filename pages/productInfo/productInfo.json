@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "商品详情",
   "usingComponents": {
-    "wux-avatar": "../../dist/avatar/index"
+    "wux-avatar": "../../dist/avatar/index",
+    "wux-icon": "../../dist/icon/index"
   }
 }
