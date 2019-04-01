@@ -16,7 +16,8 @@ App({
     productItemRedirectUrl: "/pages/productInfo/productInfo",    //点击首页商品跳转页面
     imgUrlPrefix:"http://192.168.2.171:7888/",//图片资源url前缀
     reflushWaterFall:"http://192.168.2.171:8080/index/productlist",//刷新瀑布流url
-    getDetailUrl:"http://192.168.2.171:8080/product/getiteminfo"//商品详情请求Url,onLoad中不生效
+    getDetailUrl:"http://192.168.2.171:8080/product/getiteminfo",//商品详情请求Url,onLoad中不生效
+    updateStarUrl:"http://192.168.2.171:8080/product/updateStar"  //更新收藏链接
   },
   //登录授权
   wxLogin: function () {

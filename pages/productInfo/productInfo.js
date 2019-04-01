@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    ifstar:true,
+    ifStar:true,
     productId:1,
     productInfo:"",
     getDetailUrl: app.globalData.getDetailUrl,
@@ -33,22 +33,39 @@ Page({
         that.setData({
           productInfo: res
         })
+        that.setData({
+          ifStar:(res.ifStar) == 0 ? false : true
+        })
       }))
 
   },
 
   star:function(){
-    const { ifstar } = this.data;
+    const { ifStar } = this.data;
     //访问后台，操作收藏夹
-    if(ifstar){
-      this.setData({
-        ifstar:false
-      })
-    }else{
-      this.setData({
-        ifstar:true
-      })
-    }
+    this.updateStar()
+  },
+  updateStar:function(){
+    var that = this
+    const { productId,ifStar } = this.data
+    const { updateStarUrl } = app.globalData
+    wx.request({
+      url: updateStarUrl + "?id=" + productId + "&action=" + (ifStar?'0':'1'),
+      header: {
+        'token': wx.getStorageSync('_3rd_session')
+      },
+      method: 'POST',
+      //更新收藏标记
+      success: function(res) {
+        console.log("updateStar::",res)
+        that.setData({
+          ifStar:(ifStar ? false : true)
+        })
+        console.log(that.data.ifStar)
+      },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
 
   //返回商品数据

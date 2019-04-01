@@ -35,13 +35,13 @@
   </view>
   <view class='panel3'>
     <view class='starview'>
-      <block wx:if="{{!ifstar}}">
+      <block wx:if="{{!ifStar}}">
         <button bindtap="star">
           <wux-icon type="ios-star-outline" />
         </button>
         <text>点击收藏</text>
       </block>
-      <block wx:if="{{ifstar}}">
+      <block wx:if="{{ifStar}}">
         <button bindtap="star">
           <wux-icon type="ios-star" />
         </button>
