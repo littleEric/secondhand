@@ -1,4 +1,5 @@
 // pages/productInfo/productInfo.js
+const app = getApp()
 Page({
 
   /**
@@ -6,62 +7,33 @@ Page({
    */
   data: {
     ifstar:true,
-    productId:0,
+    productId:1,
+    productInfo:"",
+    getDetailUrl: app.globalData.getDetailUrl,
+    imgUrlPrefix: app.globalData.imgUrlPrefix
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("onLoad:::options.id--->",options.id);
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+    var that = this;
+    wx.showLoading({      //显示加载中
+      title: '加载中...',
+      mask: true,   //蒙版
+    })
+    console.log("onLoad:::options.id--->",options.id)
+    new Promise((reslove,reject)=>{
+      this.setData({
+        productId:options.id
+      })
+    }).then(    
+        //从服务器获取
+      that.getRes().then((res)=>{
+        that.setData({
+          productInfo: res
+        })
+      }))
 
   },
 
@@ -78,6 +50,31 @@ Page({
       })
     }
   },
+
+  //返回商品数据
+  getRes:function(){
+    const { productId, getDetailUrl } = this.data
+    // const getDetailUrl = "http://192.168.2.171:8080/product/getiteminfo"    //获取商品详情路径
+    var url = getDetailUrl + "?id=" + productId
+    return new Promise((reslove,reject)=>{
+      wx.request({
+        url: url,
+        header: {
+          'token':wx.getStorageSync("_3rd_session")
+          },
+        method: 'POST',
+        success:(res)=>{
+          console.log("getRes::res--->",res)
+          wx.hideLoading();         //请求成功隐藏加载框
+          reslove(res.data)
+        },
+        fail:(res)=>{
+          reject(res)
+        }
+      })
+    })
+  },
+
 
   //立即购买按钮点击
   buynow:function(){
