@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "选择地址",
+  "usingComponents": {
+    "van-field": "../../dist-vant/field/index",
+    "van-panel": "../../dist-vant/panel/index",
+    "van-cell-group":"../../dist-vant/cell-group/index",
+    "van-cell": "../../dist-vant/cell/index",
+    "van-button": "../../dist-vant/button/index",
+    "van-picker": "../../dist-vant/picker/index",
+    "van-popup": "../../dist-vant/popup/index",
+    "wux-toast": "../../dist/toast/index"
+  }
+}

@@ -1,2 +1,45 @@
 <!--pages/order/order.wxml-->
-<text>pages/order/order.wxml</text>
+<view class='container'>
+  <view class='address-view'>
+    <block wx:if="{{ currentAddress == '' }}">
+      <van-cell-group>
+        <van-cell title="选择地址" icon="location-o" is-link bind:click="showAddressList" custom-class='cell' center>
+        </van-cell>
+      </van-cell-group>
+    </block>
+    <block wx:else>
+      <van-panel title="{{currentAddress.name}}" desc="{{'广东财经大学'}}{{locationList[currentAddress.locationId]}}{{domAreaList[currentAddress.domAreaId]}}{{currentAddress.buildingNum}}{{'栋'}}{{currentAddress.romNum}}" status="{{currentAddress.phoneNum}}" use-footer-slot>
+        <view slot="footer">
+          <van-button size='small' type="danger" bind:click="showAddressList">更改地址</van-button>
+        </view>
+      </van-panel>
+    </block>
+  </view>
+  <view class='product-view'>
+    <view class='user-info'>
+      <wux-avatar size="default" src="{{ itemInfo.avatarUrl}}"></wux-avatar>
+      <text>{{ itemInfo.name }}</text>
+    </view>
+    <van-card
+      num="1"
+      price="{{itemInfo.price}}.00"
+      desc="{{itemInfo.detail}}"
+      title="{{itemInfo.title}}"
+      thumb="{{ imgPrefix }}{{ itemInfo.coverUrl }}"
+      tag="{{ itemInfo.location==1?'广州':'三水' }}"
+      lazy-load
+      title-class='title'
+      desc-class='desc'
+    />
+  </view>
+  <view class='bottom-view'>
+    <van-submit-bar
+      price="{{ itemInfo.price * 100 }}"
+      button-text="提交订单"
+      bind:submit="onSubmit"
+    />
+  </view>
+</view>
+
+<wux-toast id="wux-toast" />
+

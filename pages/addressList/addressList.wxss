@@ -1,0 +1,10 @@
+/* pages/addressList/addressList.wxss */
+.btn{
+  width: 100%;
+}
+
+.btn-view {
+  position:absolute;
+  bottom:0;
+  width: 100%;
+}

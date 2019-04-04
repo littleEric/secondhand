@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "选择地址",
+  "usingComponents": {
+      "van-cell": "../../dist-vant/cell/index",
+      "van-cell-group": "../../dist-vant/cell-group/index",
+      "van-button": "../../dist-vant/button/index",
+      "van-icon": "../../dist-vant/icon/index"
+  }
+}

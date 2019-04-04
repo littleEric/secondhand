@@ -1,0 +1,9 @@
+/* pages/address/address.wxss */
+/*panel中的按钮样式覆盖*/
+.van-panel__footer {
+  text-align: right;
+}
+
+.van-button {
+  margin-left: 5px;
+}

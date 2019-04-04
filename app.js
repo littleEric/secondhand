@@ -10,6 +10,8 @@ App({
   },
   globalData: {
     userInfo: "",
+    currentOpItemId:"",     //当前操作的商品id
+    currentAddress:"",        //当前选中地址
     fileUploadUrl: "http://192.168.2.171:8080/product/publish/uploadpic",     //上传路径
     submitFormUrl: "http://192.168.2.171:8080/product/publish/add",     //商品发布url
     loginUrl: "http://192.168.2.171:8080/wxlogin",          //登录获取_3rd_session
@@ -17,7 +19,12 @@ App({
     imgUrlPrefix:"http://192.168.2.171:7888/",//图片资源url前缀
     reflushWaterFall:"http://192.168.2.171:8080/index/productlist",//刷新瀑布流url
     getDetailUrl:"http://192.168.2.171:8080/product/getiteminfo",//商品详情请求Url,onLoad中不生效
-    updateStarUrl:"http://192.168.2.171:8080/product/updateStar"  //更新收藏链接
+    updateStarUrl:"http://192.168.2.171:8080/product/updateStar",  //更新收藏链接
+    addAddress:"http://192.168.2.171:8080/address/add",       //添加地址链接
+    getAddressList:"http://192.168.2.171:8080/address/getlist",    //获取地址列表
+    getLocationList:"http://192.168.2.171:8080/address/getlocationlist",   //获取校区列表
+    getDomAreaList:"http://192.168.2.171:8080/address/getdomarealist",     //获取园区列表
+    submitOrderUrl:"http://192.168.2.171:8080/order/add",          //提交订单地址
   },
   //登录授权
   wxLogin: function () {

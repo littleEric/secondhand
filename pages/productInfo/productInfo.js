@@ -13,6 +13,11 @@ Page({
     imgUrlPrefix: app.globalData.imgUrlPrefix
   },
 
+  // 显示页面时触发
+  // onShow: function(){
+  //   console.log("onShow:::::::---->>>>")
+  // },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -22,6 +27,8 @@ Page({
       title: '加载中...',
       mask: true,   //蒙版
     })
+    //修改globalData中当前操作商品id
+    app.globalData.currentOpItemId = options.id
     console.log("onLoad:::options.id--->",options.id)
     new Promise((reslove,reject)=>{
       this.setData({
@@ -95,8 +102,14 @@ Page({
 
   //立即购买按钮点击
   buynow:function(){
+    var that = this
     //跳转到订单生成页
-
+    wx.navigateTo({
+      url: '/pages/order/order',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
 
   onPreview:function(e) {         //图片预览

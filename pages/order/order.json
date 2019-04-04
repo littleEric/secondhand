@@ -1,3 +1,14 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "确认订单",
+  "usingComponents": {
+    "van-cell": "../../dist-vant/cell/index",
+    "van-cell-group": "../../dist-vant/cell-group/index",
+    "van-card": "../../dist-vant/card/index",
+    "wux-avatar": "../../dist/avatar/index",
+    "van-submit-bar": "../../dist-vant/submit-bar/index",
+    "van-popup": "../../dist-vant/popup/index",
+    "van-panel": "../../dist-vant/panel/index",
+    "van-button": "../../dist-vant/button/index",
+    "wux-toast": "../../dist/toast/index"
+  }
 }

@@ -1,1 +1,56 @@
 /* pages/order/order.wxss */
+page {
+    background-color: #f3f3f3;
+}
+
+.container {
+  margin: 20rpx 30rpx;
+}
+
+
+.cell {
+  height: 160rpx;
+  border-radius: 20rpx;
+}
+
+.title {
+  font-size: medium;
+  margin: 10rpx 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.desc {
+  font-size: medium;
+  margin: 10rpx 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.product-view {
+  margin: 20rpx 0;
+  background-color: #ffffff;
+  padding: 20rpx 15rpx;
+  border-radius: 20rpx;
+}
+
+.user-info {
+  margin: 15rpx 0 10rpx 20rpx;
+  vertical-align: middle;
+}
+
+.user-info>text{
+  font-size: large;
+  margin-left: 20rpx;
+}
+
+/*panel中的按钮样式覆盖*/
+.van-panel__footer {
+  text-align: right;
+}
+
+.van-button {
+  margin-left: 5px;
+}

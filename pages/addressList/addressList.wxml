@@ -1,0 +1,22 @@
+<!--pages/addressList/addressList.wxml-->
+<view class='container'>
+  <view class='address-view'>
+    <van-cell-group>
+      <block wx:for="{{addressList}}" wx:for-index='index' wx:key=''>
+        <van-cell
+          title="{{item.name}}"
+          value="{{item.phoneNum}}"
+          label="{{'广东财经大学'}}{{locationList[item.locationId]}}{{domAreaList[item.domAreaId]}}{{item.buildingNum}}{{'栋'}}{{item.romNum}}"
+          border="{{ false }}"
+          is-link
+          data-index="{{index}}"
+          bind:click="onCellClick"
+        />
+      </block>
+
+    </van-cell-group>
+  </view>
+  <view class='btn-view'>
+    <van-button type="danger" custom-class="btn" bind:click="addAddress"><van-icon name="plus"/>新增地址</van-button>
+  </view>
+</view>

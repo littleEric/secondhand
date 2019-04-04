@@ -1,0 +1,71 @@
+<!--pages/address/address.wxml-->
+<!--提示-->
+<wux-toast id="wux-toast" />
+
+<!--弹出框-->
+<van-popup show="{{ showLocation }}" position='bottom'>
+  <van-picker columns="{{ locationList }}" bind:confirm="Chooser1Confirm" bind:cancel="Chooser1Cancel" show-toolbar="true" confirm-button-text="确认"	cancel-button-text="关闭" />
+</van-popup>
+<van-popup show="{{ showDom }}" position='bottom'>
+  <van-picker columns="{{ domAreaList }}" bind:confirm="Chooser2Confirm" bind:cancel="Chooser2Cancel" show-toolbar="true" confirm-button-text="确认"	cancel-button-text="关闭" />
+</van-popup>
+
+
+<view class="container">
+  <van-panel title="填写地址信息" use-footer-slot>
+  <van-cell-group>
+    <van-field
+      required
+      label="姓名"
+      placeholder="请输入姓名"
+      border="{{ false }}"
+      bind:blur="onBlur"
+      data-id='name'
+    />
+    <van-field
+      label="手机号"
+      required
+      placeholder="请输入手机号"
+      border="{{ false }}"
+      bind:blur="onBlur"
+      data-id='phoneNum'
+      type='number'
+    />
+    <van-cell
+      title="选择校区"
+      value="{{location}}"
+      is-link
+      required
+      bind:click="showChooser1"
+    />
+    <van-cell
+      title="选择宿舍园区"
+      value="{{ domArea }}"
+      is-link
+      required
+      bind:click="showChooser2"
+    />
+    <van-field
+      required
+      label="宿舍楼号"
+      placeholder="请输入楼号"
+      border="{{ false }}"
+      bind:blur="onBlur"
+      data-id='buildingNum'
+      type='number'
+    />
+    <van-field
+      required
+      label="房间号"
+      placeholder="请输入房间号"
+      border="{{ false }}"
+      bind:blur="onBlur"
+      data-id='roomNum'
+      type='number'
+    />
+  </van-cell-group>
+  <view slot="footer">
+    <van-button size="small" type="danger" bind:click="submitForm">添加</van-button>
+  </view>
+</van-panel>
+</view>
