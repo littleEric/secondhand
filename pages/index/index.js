@@ -75,6 +75,9 @@ Page({
       { id: "all", name: "全部" }
     ],      
     note: [],
+    userInfo:"",       //用户头像昵称（我的页面）
+    currentTabList:"",
+    currentMeTab:"published"   //Me页面当前tab的key  
   },
 
   //底部navbar点击时触发
@@ -131,13 +134,43 @@ Page({
         })
       }
     })
-    console.log(that.data);
-    const { currentTabKey, currentPage, currentBtn } = that.data;
-    that.getRes(currentTabKey, currentPage, currentBtn).then((res) => { that.setData({
-      note: res
-    }) })
     //打印_3rd_session
     console.log("3rd_session",wx.getStorageSync("_3rd_session"))
+    var userInfo = wx.getStorageSync("_user_info")
+    if(userInfo == ""){
+      wx.request({
+        url: app.globalData.getUserInfoUrl,
+        header: {
+          'token':wx.getStorageSync("_3rd_session")
+        },
+        method: 'POST',
+        success: function(res) {
+          that.setData({
+            userInfo: res.data
+          })
+          wx.setStorageSync("_user_info", res.data)
+        },
+        fail: function(res) {},
+        complete: function(res) {},
+      })
+    }else{
+      that.setData({
+        userInfo:userInfo
+      })
+    }
+  },
+
+  onShow:function(){
+    var that = this
+    const { currentTabKey, currentPage, currentBtn } = that.data;
+    this.getRes(currentTabKey, currentPage, currentBtn).then((res) => {
+      that.setData({
+        note: res
+      })
+    })
+    //离开再回来时更新列表
+    this.refreshMeList(this.data.currentMeTab)
+
   },
 
   /**
@@ -236,5 +269,183 @@ Page({
         complete: function (res) { },
       })
     })
+  },
+
+  //商品列表tab更改时
+  onMeTabChange:function(e){
+    var that = this
+    console.log("onMeTabChange",e)
+    const{ key } = e.detail
+    new Promise((reslove,reject)=>{
+      that.setData({
+        currentMeTab:key
+      })
+      reslove()
+    }).then((res)=>{
+      that.refreshMeList(key)
+    })
+    
+    
+  },
+
+  //刷新Me列表
+  refreshMeList: function(key){
+    var that = this
+    switch (key) {
+      case 'published':
+        that.getPublished().then((res) => {
+          that.setData({
+            currentTabList: res
+          })
+        })
+        break
+
+      case 'bought':
+        that.getBought().then((res) => {
+          that.setData({
+            currentTabList: res
+          })
+        })
+        break
+
+      case 'sold':
+        that.getSold().then((res) => {
+          that.setData({
+            currentTabList: res
+          })
+        })
+        break
+
+      case 'stared':
+        that.getStared().then((res) => {
+          that.setData({
+            currentTabList: res
+          })
+        })
+        break
+
+    }
+  },
+  //获取已发布商品列表
+  getPublished:function(){
+    return new Promise((reslove,reject)=>{
+      wx.request({
+        url: app.globalData.getPublishedListUrl,
+        header: {
+          'token':wx.getStorageSync("_3rd_session")
+        },
+        method: 'POST',
+        success: function(res) {
+          reslove(res.data)
+        },
+        fail: function(res) {
+          reject(res.data)
+        },
+        complete: function(res) {},
+      })
+    })
+  },
+  //获取售出商品列表
+  getBought: function () {
+    return new Promise((reslove, reject) => {
+      wx.request({
+        url: app.globalData.getBoughtListUrl,
+        header: {
+          'token': wx.getStorageSync("_3rd_session")
+        },
+        method: 'POST',
+        success: function (res) {
+          reslove(res.data)
+        },
+        fail: function (res) {
+          reject(res.data)
+        },
+        complete: function (res) { },
+      })
+    })
+  },
+
+  //获取卖出商品列表
+  getSold: function () {
+    return new Promise((reslove, reject) => {
+      wx.request({
+        url: app.globalData.getSoldListUrl,
+        header: {
+          'token': wx.getStorageSync("_3rd_session")
+        },
+        method: 'POST',
+        success: function (res) {
+          reslove(res.data)
+        },
+        fail: function (res) {
+          reject(res.data)
+        },
+        complete: function (res) { },
+      })
+    })
+  },
+
+  //获取收藏商品列表
+  getStared: function () {
+    return new Promise((reslove, reject) => {
+      wx.request({
+        url: app.globalData.getStarListUrl,
+        header: {
+          'token': wx.getStorageSync("_3rd_session")
+        },
+        method: 'POST',
+        success: function (res) {
+          reslove(res.data)
+        },
+        fail: function (res) {
+          reject(res.data)
+        },
+        complete: function (res) { },
+      })
+    })
+  },
+
+
+  //点击取消发布按钮，传入商品id
+  unpublish: function(e) {
+    var that = this
+    console.log("unpublish",e)
+    const{ id } = e.currentTarget
+    wx.request({
+      url: app.globalData.unPublishUrl+"?id="+id,
+      header: {
+        'token':wx.getStorageSync("_3rd_session")
+      },
+      method: 'POST',
+      success: function(res) {
+        console.log(res)
+        that.refreshMeList(that.data.currentMeTab)
+      },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+
+  //点击取消收藏
+  unstar:function(e) {
+    var that = this
+    console.log("unstar",e)
+    const { id } = e.currentTarget
+    wx.request({
+      url: app.globalData.updateStarUrl+"?id="+id+"&action="+"0",
+      data: '',
+      header: {
+        'token':wx.getStorageSync("_3rd_session")
+      },
+      method: 'POST',
+      success: function(res) {
+        console.log(res)
+        that.refreshMeList(that.data.currentMeTab)
+      },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+
   }
+
 })

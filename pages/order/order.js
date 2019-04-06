@@ -73,7 +73,7 @@ Page({
             color: '#fff',
             text: '购买成功',
             success: () => {
-              wx.navigateTo({
+              wx.reLaunch({
                 url: '/pages/index/index',
                 success: function(res) {},
                 fail: function(res) {},
@@ -92,7 +92,7 @@ Page({
   //显示地址列表
   showAddressList:function(){
     //跳转到选择地址页面
-    wx.redirectTo({
+    wx.navigateTo({
       url: '/pages/addressList/addressList',
       success: function(res) {},
       fail: function(res) {},

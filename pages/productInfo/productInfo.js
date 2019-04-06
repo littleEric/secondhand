@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    ifStar:true,
+    ifStar:false,
     productId:1,
     productInfo:"",
     getDetailUrl: app.globalData.getDetailUrl,

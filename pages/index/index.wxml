@@ -167,8 +167,99 @@
 </view>
 
 <!--我的订单-->
-<view wx:if="{{current == 'me'}}">
-  我的订单
+<view wx:if="{{current == 'me'}}" class='me-view'>
+  <view class='user-info-super'>
+    <view class='user-info'>
+      <wux-avatar size="large" src="{{userInfo.avatarUrl}}"></wux-avatar>
+      <text>{{userInfo.name}}</text>
+    </view>
+  </view>
+  <view class='panel2'>
+    <view class='tab-view'>
+      <wux-tabs defaultCurrent="published" bind:change="onMeTabChange" theme="assertive">
+        <wux-tab key="published" title="我发布的"></wux-tab>
+        <wux-tab key="bought" title="我购买的"></wux-tab>
+        <wux-tab key="sold" title="我卖出的"></wux-tab>
+        <wux-tab key="stared" title="我收藏的"></wux-tab>
+      </wux-tabs>
+    </view>
+    
+  </view>
+  <view class='list-view'>
+  <!--发布list-->
+    <block wx:if="{{currentMeTab=='published'}}">
+      <block wx:for="{{currentTabList}}" wx:key=''>
+        <van-card
+          num="1"
+          tag="{{(item.location=='0')?'三水校区':'广州校区'}}"
+          price="{{item.price}}.00"
+          desc="{{item.detail}}"
+          title="{{item.title}}"
+          thumb="{{ imgUrlPrefix }}{{ item.coverFileName }}"
+          thumb-link="/pages/productInfo/productInfo?id={{item.id}}"
+        >
+          <view slot="footer">
+            <van-button id="{{item.id}}" round size="small" type="danger" bind:click="unpublish">取消发布</van-button>
+          </view>
+        </van-card>
+      </block>
+    </block>
+
+    <!--购买list-->
+    <block wx:if="{{currentMeTab=='bought'}}">
+      <block wx:for="{{currentTabList}}" wx:key=''>
+        <van-card
+          num="1"
+          tag="{{(item.location=='0')?'三水校区':'广州校区'}}"
+          price="{{item.price}}.00"
+          desc="{{item.detail}}"
+          title="{{item.title}}"
+          thumb="{{ imgUrlPrefix }}{{ item.coverFileName }}"
+        >
+        </van-card>
+      </block>
+    </block>
+
+    <!--卖出list-->
+    <block wx:if="{{currentMeTab=='sold'}}">
+      <block wx:for="{{currentTabList}}" wx:key=''>
+        <van-card
+          num="1"
+          tag="{{(item.location=='0')?'三水校区':'广州校区'}}"
+          price="{{item.price}}.00"
+          desc="{{item.detail}}"
+          title="{{item.title}}"
+          thumb="{{ imgUrlPrefix }}{{ item.coverFileName }}"
+        >
+        </van-card>
+      </block>
+    </block>
+
+    <!--收藏list-->
+    <block wx:if="{{currentMeTab=='stared'}}">
+      <block wx:for="{{currentTabList}}" wx:key=''>
+        <van-card
+          num="1"
+          tag="{{(item.location=='0')?'三水校区':'广州校区'}}"
+          price="{{item.price}}.00"
+          desc="{{item.detail}}"
+          title="{{item.title}}"
+          thumb="{{ imgUrlPrefix }}{{ item.coverFileName }}"
+          thumb-link="/pages/productInfo/productInfo?id={{item.id}}"
+        >
+          <view slot="footer">
+            <van-button id="{{item.id}}" round size="small" type="danger" bind:click="unstar">取消收藏</van-button>
+          </view>
+        </van-card>
+      </block>
+    </block>
+    
+  </view>
+
+
+<view>
+  
+  </view>
 </view>
 
 <view class='navbar'>

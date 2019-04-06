@@ -137,3 +137,38 @@ button::after {
 .right{
   float: right;
 }
+
+.me-view{
+  position: relative;
+}
+
+.user-info-super{
+  height: 200rpx;
+  width: 100%;
+  border-radius: 0 0 50% 50%;
+  background-color: lightcoral;
+}
+
+.user-info {
+  padding: 25rpx 0 10rpx 30rpx;
+  vertical-align: middle;
+}
+
+.user-info>text{
+  font-size: 40rpx;
+  font-weight: bolder;
+  margin-left: 20rpx;
+  color: white;
+}
+.panel2{
+  padding: 0 20rpx;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 150rpx;
+  text-align: center;
+}
+
+.list-view{
+  margin-top: 50rpx;
+}

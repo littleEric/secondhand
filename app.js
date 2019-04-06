@@ -18,13 +18,19 @@ App({
     productItemRedirectUrl: "/pages/productInfo/productInfo",    //点击首页商品跳转页面
     imgUrlPrefix:"http://192.168.2.171:7888/",//图片资源url前缀
     reflushWaterFall:"http://192.168.2.171:8080/index/productlist",//刷新瀑布流url
-    getDetailUrl:"http://192.168.2.171:8080/product/getiteminfo",//商品详情请求Url,onLoad中不生效
+    getDetailUrl:"http://192.168.2.171:8080/product/getiteminfo",//商品详情请求Url
     updateStarUrl:"http://192.168.2.171:8080/product/updateStar",  //更新收藏链接
+    unPublishUrl:"http://192.168.2.171:8080/me/unpublish",    //取消发布
     addAddress:"http://192.168.2.171:8080/address/add",       //添加地址链接
     getAddressList:"http://192.168.2.171:8080/address/getlist",    //获取地址列表
     getLocationList:"http://192.168.2.171:8080/address/getlocationlist",   //获取校区列表
     getDomAreaList:"http://192.168.2.171:8080/address/getdomarealist",     //获取园区列表
     submitOrderUrl:"http://192.168.2.171:8080/order/add",          //提交订单地址
+    getUserInfoUrl:"http://192.168.2.171:8080/me/getuserinfo",       //获取用户头像
+    getPublishedListUrl:"http://192.168.2.171:8080/me/getpublishedlist",   //获取已发布商品列表
+    getBoughtListUrl: "http://192.168.2.171:8080/me/getboughtlist",   //获取已购买商品列表
+    getSoldListUrl: "http://192.168.2.171:8080/me/getsoldlist",   //获取已卖出商品列表
+    getStarListUrl: "http://192.168.2.171:8080/me/getstarlist"    //获取已收藏商品列表
   },
   //登录授权
   wxLogin: function () {

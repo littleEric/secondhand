@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "小财二手",
   "usingComponents": {
     "wux-icon": "../../dist/icon/index",
     "wux-tabbar": "../../dist/tabbar/index",
@@ -7,6 +8,11 @@
     "wux-tabs": "../../dist/tabs/index",
     "wux-tab": "../../dist/tab/index",
     "wux-grids": "../../dist/grids/index",
-    "wux-grid": "../../dist/grid/index"
+    "wux-grid": "../../dist/grid/index",
+    "wux-avatar": "../../dist/avatar/index",
+    "wux-cell-group": "../../dist/cell-group/index",
+    "wux-cell": "../../dist/cell/index",
+    "van-card": "../../dist-vant/card/index",
+    "van-button": "../../dist-vant/button/index"
   }
 }
