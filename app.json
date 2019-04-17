@@ -1,14 +1,15 @@
 {
   "pages": [
     "pages/loading/loading",
-    "pages/fucktencent/sbtencent",
+    "pages/authBtn/authbtn",
     "pages/index/index",
     "pages/logs/logs",
     "pages/publish/publish",
     "pages/productInfo/productInfo",
     "pages/order/order",
     "pages/addressList/addressList",
-    "pages/address/address"
+    "pages/address/address",
+    "pages/checkOrder/checkorder"
   ],
   "window": {
     "backgroundTextStyle": "light",

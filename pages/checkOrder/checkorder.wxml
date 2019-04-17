@@ -1,0 +1,34 @@
+<!--pages/checkOrder/chectorder.wxml-->
+<view class='container'>
+  <view class='address-view'>
+    <view class='text-view'>
+      <text>收货人地址</text>
+    </view>
+    <van-panel title="{{orderDetail.address.name}}" desc="广东财经大学{{orderDetail.address.location}}{{orderDetail.address.domArea}}{{orderDetail.address.buildingNum}}栋{{orderDetail.address.roomNum}}" status="{{orderDetail.address.phoneNum}}">
+    </van-panel>
+  </view>
+  <view class='text-view text-view2'>
+    <text>订单详情</text>
+  </view>
+  
+  <view class='product-view'>
+    <view class='user-info'>
+      <wux-avatar size="default" src="{{ orderDetail.avaNname.avatarUrl}}"></wux-avatar>
+      <text>{{ orderDetail.avaNname.name }}</text>
+    </view>
+    <van-card
+      num="1"
+      price="{{orderDetail.product.price}}.00"
+      desc="{{orderDetail.product.detail}}"
+      title="{{orderDetail.product.title}}"
+      thumb="{{nginxPrefix}}{{orderDetail.product.coverFileName}}"
+      tag="{{ orderDetail.product.location==1?'广州':'三水' }}"
+      lazy-load
+      title-class='title'
+      desc-class='desc'
+    />
+  </view>
+
+  
+</view>
+

@@ -282,6 +282,7 @@ Page({
       })
       reslove()
     }).then((res)=>{
+      console.log(res)
       that.refreshMeList(key)
     })
     
@@ -446,6 +447,17 @@ Page({
       complete: function(res) {},
     })
 
+  },
+
+  //查看订单
+  checkOrder:function(e){
+    const{id} = e.currentTarget
+    wx.navigateTo({
+      url: '/pages/checkOrder/checkorder?id='+id,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   }
 
 })

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "查看订单",
+  "usingComponents": {
+    "van-panel": "../../dist-vant/panel/index",
+    "van-card": "../../dist-vant/card/index",
+    "wux-avatar": "../../dist/avatar/index"
+  }
+}

@@ -1,36 +1,40 @@
 //app.js
+const tomcatPrefix = "http://192.168.2.171:8080/"
+const nginxPrefix = "http://192.168.2.171:7888/"
 App({
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    // wx.setStorageSync('token', 'd27846d56770428cb542d66f9d6c57a0')
+    // wx.setStorageSync('token', '43a3f65b8b674530b8913d04f05faaa9')
     
   },
   globalData: {
     userInfo: "",
     currentOpItemId:"",     //当前操作的商品id
     currentAddress:"",        //当前选中地址
-    fileUploadUrl: "http://192.168.2.171:8080/product/publish/uploadpic",     //上传路径
-    submitFormUrl: "http://192.168.2.171:8080/product/publish/add",     //商品发布url
-    loginUrl: "http://192.168.2.171:8080/wxlogin",          //登录获取_3rd_session
+    nginxPrefix:nginxPrefix,    //全局nginx前缀
+    fileUploadUrl: tomcatPrefix + "product/publish/uploadpic",     //上传路径
+    submitFormUrl: tomcatPrefix + "product/publish/add",     //商品发布url
+    loginUrl: tomcatPrefix + "wxlogin",          //登录获取_3rd_session
     productItemRedirectUrl: "/pages/productInfo/productInfo",    //点击首页商品跳转页面
-    imgUrlPrefix:"http://192.168.2.171:7888/",//图片资源url前缀
-    reflushWaterFall:"http://192.168.2.171:8080/index/productlist",//刷新瀑布流url
-    getDetailUrl:"http://192.168.2.171:8080/product/getiteminfo",//商品详情请求Url
-    updateStarUrl:"http://192.168.2.171:8080/product/updateStar",  //更新收藏链接
-    unPublishUrl:"http://192.168.2.171:8080/me/unpublish",    //取消发布
-    addAddress:"http://192.168.2.171:8080/address/add",       //添加地址链接
-    getAddressList:"http://192.168.2.171:8080/address/getlist",    //获取地址列表
-    getLocationList:"http://192.168.2.171:8080/address/getlocationlist",   //获取校区列表
-    getDomAreaList:"http://192.168.2.171:8080/address/getdomarealist",     //获取园区列表
-    submitOrderUrl:"http://192.168.2.171:8080/order/add",          //提交订单地址
-    getUserInfoUrl:"http://192.168.2.171:8080/me/getuserinfo",       //获取用户头像
-    getPublishedListUrl:"http://192.168.2.171:8080/me/getpublishedlist",   //获取已发布商品列表
-    getBoughtListUrl: "http://192.168.2.171:8080/me/getboughtlist",   //获取已购买商品列表
-    getSoldListUrl: "http://192.168.2.171:8080/me/getsoldlist",   //获取已卖出商品列表
-    getStarListUrl: "http://192.168.2.171:8080/me/getstarlist"    //获取已收藏商品列表
+    imgUrlPrefix:nginxPrefix,//图片资源url前缀
+    reflushWaterFall: tomcatPrefix + "index/productlist",//刷新瀑布流url
+    getDetailUrl: tomcatPrefix + "product/getiteminfo",//商品详情请求Url
+    updateStarUrl: tomcatPrefix + "product/updateStar",  //更新收藏链接
+    unPublishUrl: tomcatPrefix + "me/unpublish",    //取消发布
+    addAddress: tomcatPrefix + "address/add",       //添加地址链接
+    getAddressList: tomcatPrefix + "address/getlist",    //获取地址列表
+    getLocationList: tomcatPrefix + "address/getlocationlist",   //获取校区列表
+    getDomAreaList: tomcatPrefix + "address/getdomarealist",     //获取园区列表
+    submitOrderUrl: tomcatPrefix + "order/add",          //提交订单地址
+    getUserInfoUrl: tomcatPrefix + "me/getuserinfo",       //获取用户头像
+    getPublishedListUrl: tomcatPrefix + "me/getpublishedlist",   //获取已发布商品列表
+    getBoughtListUrl: tomcatPrefix + "me/getboughtlist",   //获取已购买商品列表
+    getSoldListUrl: tomcatPrefix + "me/getsoldlist",   //获取已卖出商品列表
+    getStarListUrl: tomcatPrefix + "me/getstarlist",    //获取已收藏商品列表
+    getOrderDetail: tomcatPrefix + "order/detail"     //订单详情
   },
   //登录授权
   wxLogin: function () {

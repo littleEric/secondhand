@@ -31,7 +31,7 @@ Page({
           })
         }else{            //未授权，初次登录，跳转到授权页面
           wx.redirectTo({
-            url: '/pages/fucktencent/sbtencent'
+            url: '/pages/authBtn/authbtn'
           })
         }
       }

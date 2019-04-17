@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "用户授权",
   "usingComponents": {
     "wux-icon": "../../dist/icon/index",
     "wux-button": "../../dist/button/index",

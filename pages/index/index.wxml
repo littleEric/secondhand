@@ -216,6 +216,9 @@
           title="{{item.title}}"
           thumb="{{ imgUrlPrefix }}{{ item.coverFileName }}"
         >
+          <view slot="footer">
+              <van-button id="{{item.id}}" round size="small" type="danger" bind:click="checkOrder">查看订单</van-button>
+          </view>
         </van-card>
       </block>
     </block>
@@ -231,6 +234,9 @@
           title="{{item.title}}"
           thumb="{{ imgUrlPrefix }}{{ item.coverFileName }}"
         >
+          <view slot="footer">
+            <van-button id="{{item.id}}" round size="small" type="danger" bind:click="checkOrder">查看订单</van-button>
+          </view>
         </van-card>
       </block>
     </block>
