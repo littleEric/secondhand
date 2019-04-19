@@ -161,13 +161,22 @@ Page({
   },
 
   onShow:function(){
-    var that = this
-    const { currentTabKey, currentPage, currentBtn } = that.data;
-    this.getRes(currentTabKey, currentPage, currentBtn).then((res) => {
-      that.setData({
-        note: res
-      })
-    })
+    // var that = this
+    // const { currentTabKey, currentPage, currentBtn } = that.data;
+    // this.getRes(currentTabKey, currentPage, currentBtn).then((res) => {
+    //   that.setData({
+    //     note: res
+    //   })
+    // })
+    // var that = this
+    // const { currentTabKey, currentBtn } = this.data
+    // this.getRes(currentTabKey, 1, currentBtn).then((res) => {
+    //   //修改当前页
+    //   that.setData({
+    //     currentPage: 1
+    //   })
+    //   that.firstTimeReflash(res);
+    // })
     //离开再回来时更新列表
     this.refreshMeList(this.data.currentMeTab)
 

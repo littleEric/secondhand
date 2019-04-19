@@ -161,11 +161,6 @@
   </scroll-view>
 </view>
 
-<!--消息-->
-<view wx:if="{{current == 'message'}}">
-  消息界面
-</view>
-
 <!--我的订单-->
 <view wx:if="{{current == 'me'}}" class='me-view'>
   <view class='user-info-super'>
@@ -278,10 +273,6 @@
     <wux-tabbar-item key="publish" title="发布二手">
         <wux-icon wux-class="icon" type="ios-add-circle" size="22" slot="icon-on" />
         <wux-icon wux-class="icon" type="ios-add-circle" size="22" slot="icon-off" />
-    </wux-tabbar-item>
-    <wux-tabbar-item key="message" title="消息">
-        <wux-icon wux-class="icon" type="ios-chatboxes" size="22" slot="icon-on" />
-        <wux-icon wux-class="icon" type="ios-chatboxes" size="22" slot="icon-off" />
     </wux-tabbar-item>
     <wux-tabbar-item key="me" title="我的">
         <wux-icon wux-class="icon" type="ios-person" size="22" slot="icon-on" />

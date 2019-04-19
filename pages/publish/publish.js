@@ -194,12 +194,12 @@ Page({
     var brand = this.data.brand;
     var price = this.data.price;
     //提示未上传图片
-    if(fileNameList.length < 3 ){
+    if(fileNameList.length < 2 ){
       $wuxToast().show({
         type: 'forbidden',
         duration: 1500,
         color: '#fff',
-        text: '最少上传3张图片'
+        text: '最少上传2张图片'
       })
       return
     }
